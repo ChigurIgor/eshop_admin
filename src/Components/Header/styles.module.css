@@ -1,0 +1,10 @@
+.wrapper{
+    background-color: rgb(0,0,255);
+    display: flex;
+    padding-left: 50px;
+    height: 10vh;
+}
+.title{
+    color: white;
+    font-size: 30px;
+}
