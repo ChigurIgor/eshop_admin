@@ -1,6 +1,8 @@
+import styles from './styles.module.css';
 const DetailsComponent = () =>{
+    const {wrapper} = styles;
     return(
-        <div>
+        <div className={wrapper}>
             Details
         </div>
     )

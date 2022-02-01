@@ -1,4 +1,4 @@
-import DetailsComponent from "../Details/DetailsComponent";
+import DetailsComponent from "./Details/DetailsComponent";
 import ListHandlerComponent from "./ListHandler/ListHandlerComponent";
 import styles from './styles.module.css';
 const MainComponent = () =>{
