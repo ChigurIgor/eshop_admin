@@ -1,7 +1,12 @@
+import styles from './styles.module.css';
+import ListItemComponent from "./ListItem/ListItemComponent";
 const ListWrapperComponent = () =>{
+    const {wrapper} = styles;
     return(
-        <div>
-            ListWrapper
+        <div className={wrapper}>
+            <ListItemComponent/>
+            <ListItemComponent/>
+            <ListItemComponent/>
         </div>
     )
 }

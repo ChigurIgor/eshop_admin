@@ -6,10 +6,8 @@ const ListManagerComponent = () =>{
             <button onClick={ ()=>{}}>+Add</button>
             <span>Search By</span>
             <select name="cars" id="cars">
-                <option value="volvo">Volvo</option>
-                <option value="saab">Saab</option>
-                <option value="mercedes">Mercedes</option>
-                <option value="audi">Audi</option>
+                <option value="price">Price</option>
+
             </select>
             <input type='text' placeholder={'Search ...'}/>
         </div>
