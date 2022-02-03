@@ -1,15 +1,25 @@
 import styles from './styles.module.css';
 const ListManagerComponent = () =>{
-    const {wrapper} = styles;
+    const {wrapper, btn, input, text, select, option} = styles;
     return(
         <div className={wrapper}>
-            <button onClick={ ()=>{}}>+Add</button>
-            <span>Search By</span>
-            <select name="cars" id="cars">
-                <option value="price">Price</option>
-
+            <button className={btn}
+                    onClick={ ()=>{}}
+            >
+                Add
+            </button>
+            <input className={input}
+                   type='text'
+                   placeholder={'Search products ...'}
+            />
+            <span className={text}>Sort By</span>
+            <select className={select}
+                    name="sort"
+                    id="sort"
+            >
+                <option className={option} value="price">Price</option>
+                <option className={option} value="recently">Recently added</option>
             </select>
-            <input type='text' placeholder={'Search ...'}/>
         </div>
     )
 }

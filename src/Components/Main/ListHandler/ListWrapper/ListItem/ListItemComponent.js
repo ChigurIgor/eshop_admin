@@ -1,7 +1,7 @@
 import styles from './styles.module.css';
 
 const ListItemComponent = () =>{
-    const {wrapper, image, subwrapper, title, description, button} = styles;
+    const {wrapper, image, subwrapper, title, description, btn} = styles;
     return(
         <div className={wrapper}>
             <img
@@ -13,7 +13,7 @@ const ListItemComponent = () =>{
                 <p className={description}>Description</p>
             </div>
             <button
-                className={button}
+                className={btn}
                 onClick={()=>{}}
             >
                 Delete

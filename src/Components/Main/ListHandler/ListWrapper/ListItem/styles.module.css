@@ -21,19 +21,22 @@
     font-size: 16px;
     overflow: hidden;
 }
-.button{
+.btn{
     align-self: end;
     margin-left: auto;
     color: white;
-    background-image: linear-gradient( 225deg, rgba(0,0,255,0.3), rgba(0,0,255,0.7));
+    background-image: linear-gradient( 225deg, rgba(0,0,255,0.5), rgba(0,0,255,0.7));
     border-radius: 5px;
     font-size: 20px;
     padding: 5px 10px;
+    border: none;
+    box-shadow: rgba(0,0,0,0.2) 2px 2px;
 }
-.button:hover{
-    background-image: linear-gradient( 225deg, rgba(0,0,255,0.2), rgba(0,0,255,0.6));
+.btn:hover{
+    background-image: linear-gradient( 225deg, rgba(0,0,255,0.4), rgba(0,0,255,0.6));
 }
-.button:active{
-    background-image: linear-gradient( 225deg, rgba(0,0,255,0.2), rgba(0,0,255,0.6));
+.btn:active{
+    background-image: linear-gradient( 225deg, rgba(0,0,255,0.4), rgba(0,0,255,0.6));
     transform: translatey(2px);
+    box-shadow: none;
 }
