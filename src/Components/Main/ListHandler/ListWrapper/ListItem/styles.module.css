@@ -3,8 +3,9 @@
     display: flex;
     flex-direction: row;
     padding: 10px;
+    height: 125px;
 }
-.image{
+.img{
     height: 100px;
     width: 100px;
 }
@@ -14,12 +15,14 @@
     padding-left: 20px;
 }
 .title{
-    font-size: 24px;
-    margin: 0;
-}
-.description{
     font-size: 16px;
+    margin: 0;
+    text-align: left;
+}
+.descr{
+    font-size: 14px;
     overflow: hidden;
+    text-align: left;
 }
 .btn{
     align-self: end;

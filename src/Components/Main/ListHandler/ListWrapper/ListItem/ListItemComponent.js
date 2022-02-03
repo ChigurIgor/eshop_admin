@@ -1,24 +1,28 @@
 import styles from './styles.module.css';
+import {ProductsStoreContext} from "../../../../../App";
+import {useContext} from "react";
+import {observer} from "mobx-react";
 
-const ListItemComponent = () =>{
-    const {wrapper, image, subwrapper, title, description, btn} = styles;
+const ListItemComponent = ({id, creationDate, name, price, description, image:imageUrl}) =>{
+    const {wrapper, img, subwrapper, title, descr, btn} = styles;
+    const store = useContext(ProductsStoreContext);
     return(
-        <div className={wrapper}>
+        <div className={wrapper} onClick={()=>{store?.setSelectedProduct(id)}}>
             <img
-                className={image}
-                src={'https://litb-cgis.rightinthebox.com/images/640x853/202109/bps/product/inc/fmmega1632724389946.jpg?fmt=webp&v=1'}
+                className={img}
+                src={imageUrl}
             />
             <div className={subwrapper}>
-                <h3 className={title}>Title</h3>
-                <p className={description}>Description</p>
+                <h3 className={title}>{name}</h3>
+                <p className={descr}>{description}</p>
             </div>
             <button
                 className={btn}
-                onClick={()=>{}}
+                onClick={(event)=>{ event.stopPropagation();console.log('delete')}}
             >
                 Delete
             </button>
         </div>
     )
 }
-export default ListItemComponent;
+export default observer(ListItemComponent);

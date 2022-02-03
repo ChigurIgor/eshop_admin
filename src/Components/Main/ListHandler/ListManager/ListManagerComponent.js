@@ -1,6 +1,13 @@
 import styles from './styles.module.css';
+import {useContext} from "react";
+import {ProductsStoreContext} from "../../../../App";
+import {observer} from "mobx-react";
+
 const ListManagerComponent = () =>{
     const {wrapper, btn, input, text, select, option} = styles;
+    const store = useContext(ProductsStoreContext);
+    const {products} = store;
+
     return(
         <div className={wrapper}>
             <button className={btn}
@@ -23,4 +30,4 @@ const ListManagerComponent = () =>{
         </div>
     )
 }
-export default ListManagerComponent;
+export default observer(ListManagerComponent);
