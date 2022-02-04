@@ -18,7 +18,7 @@ const ListItemComponent = ({id, creationDate, name, price, description, image:im
             </div>
             <button
                 className={btn}
-                onClick={(event)=>{ event.stopPropagation();console.log('delete')}}
+                onClick={(event)=>{ event.stopPropagation();store.deleteProduct(id)}}
             >
                 Delete
             </button>

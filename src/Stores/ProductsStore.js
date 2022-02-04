@@ -180,5 +180,10 @@ class ProductsStore {
     updateSelectedProduct(newProduct) {
         this.selectedProduct = {... newProduct};
     }
+    deleteProduct(id){
+        const newProducts = this.products.filter(product =>  product?.id !== id);
+        this.products = [...newProducts];
+        (this.selectedProduct.id === id) && (this.selectedProduct = undefined);
+    }
 }
 export default ProductsStore;
