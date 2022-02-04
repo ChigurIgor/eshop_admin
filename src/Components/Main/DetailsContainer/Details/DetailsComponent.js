@@ -6,7 +6,6 @@ const DetailsComponent = () =>{
     const {wrapper, img, imgUrl, mainTitle, title, description, price, btn, priceWrapper, text } = styles;
     const store = useContext(ProductsStoreContext);
     const {selectedProduct, selectedProduct:{id, name, price:productPrice, description: productDescription, image}} = store;
-
     const changeHandler = ({target:{name, value}}) => {
         switch (name){
             case "name":
@@ -72,8 +71,7 @@ const DetailsComponent = () =>{
 
                     <button
                         className={btn}
-                        onClick={() => {
-                        }}
+                        onClick={() => {store.saveProduct(selectedProduct)}}
                     >
                         Save
                     </button>

@@ -1,4 +1,5 @@
 import {makeAutoObservable} from "mobx";
+import {idGenerator} from "../Utils/Utils";
 
 class ProductsStore {
     constructor() {
@@ -176,7 +177,16 @@ class ProductsStore {
     setSelectedProduct(id){
         const product = this.products.find(product =>  product?.id === id);
         this.selectedProduct = product;
+        !id && (this.selectedProduct = {
+                id: idGenerator(),
+                name: '',
+                description: '',
+                price: 0,
+                image:''
+            }
+    )
     }
+
     updateSelectedProduct(newProduct) {
         this.selectedProduct = {... newProduct};
     }
@@ -184,6 +194,12 @@ class ProductsStore {
         const newProducts = this.products.filter(product =>  product?.id !== id);
         this.products = [...newProducts];
         (this.selectedProduct.id === id) && (this.selectedProduct = undefined);
+    }
+
+    saveProduct(product){
+        const i = this.products.findIndex(({id}) => id=== product.id)
+        console.log(i);
+        (i >= 0) ? (this.products[i] = product) : (this.products.push(product))
     }
 }
 export default ProductsStore;

@@ -11,7 +11,7 @@ const ListManagerComponent = () =>{
     return(
         <div className={wrapper}>
             <button className={btn}
-                    onClick={ ()=>{}}
+                    onClick={ ()=>store.setSelectedProduct(undefined)}
             >
                 Add
             </button>
