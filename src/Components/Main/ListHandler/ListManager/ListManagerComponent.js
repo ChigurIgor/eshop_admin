@@ -8,10 +8,7 @@ const ListManagerComponent = () =>{
     const store = useContext(ProductsStoreContext);
     const {products, searchConditions, sortConditions} = store;
 
-    useEffect(
-        ()=> {console.log(products);},
-        [ products]
-    );
+    useEffect(() => store.setCurrentPage(1), [sortConditions, searchConditions])
     useEffect(
         ()=> store.sortProducts(sortConditions),
         [sortConditions, products]

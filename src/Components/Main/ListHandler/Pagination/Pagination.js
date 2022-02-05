@@ -26,7 +26,6 @@ const range = (from, to, step = 1) => {
 const Pagination = (props) => {
     const store = useContext(ProductsStoreContext);
     const {currentPage, pageLimit} = store;
-
     const totalRecords = props.totalRecords;
     const pageNeighbours  = props.pageNeighbours ;
     const totalPages = Math.ceil(totalRecords/pageLimit);
