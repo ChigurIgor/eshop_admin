@@ -30,13 +30,13 @@ const DetailsComponent = () =>{
                     <h3 className={mainTitle}> {name} Details</h3>
                     <img
                         className={img}
-                        src={image}
+                        src={image || ''}
                     />
                     <p className={text}>Image Url</p>
                     <input
                         className={imgUrl}
                         type={"text"}
-                        value={image}
+                        value={image || ''}
                         onChange={changeHandler}
                         name={'image'}
                     />
@@ -44,14 +44,14 @@ const DetailsComponent = () =>{
                     <input
                         className={title}
                         type={"text"}
-                        value={name}
+                        value={name || ''}
                         name={'name'}
                         onChange={changeHandler}
                     />
                     <p className={text}>Description</p>
                     <textarea
                         className={description}
-                        value={productDescription}
+                        value={productDescription || ''}
                         name={'description'}
                         onChange={changeHandler}
                     />
@@ -62,7 +62,7 @@ const DetailsComponent = () =>{
                             type={'number'}
                             placeholder={0}
                             min={0}
-                            value={productPrice}
+                            value={productPrice || 0}
                             onChange={changeHandler}
                             name={'price'}
                         />

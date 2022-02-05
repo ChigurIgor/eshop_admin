@@ -1,13 +1,34 @@
 import styles from './styles.module.css';
-import {useContext} from "react";
+import {useContext, useEffect} from "react";
 import {ProductsStoreContext} from "../../../../App";
 import {observer} from "mobx-react";
 
 const ListManagerComponent = () =>{
     const {wrapper, btn, input, text, select, option} = styles;
     const store = useContext(ProductsStoreContext);
-    const {products} = store;
+    const {searchConditions, sortConditions} = store;
+    useEffect(
+        ()=> store.sortProducts(sortConditions),
+        [sortConditions]
+    );
 
+    useEffect(
+        ()=> store.searchProducts(searchConditions),
+        [searchConditions]
+    );
+
+    const changeHandler = ({target:{name, value}}) =>{
+        switch (name){
+            case 'search':
+                store.setSearchConditions(value);
+                break;
+            case 'sort':
+                store.setSortConditions(value);
+                break;
+            default:
+                break
+        }
+    }
     return(
         <div className={wrapper}>
             <button className={btn}
@@ -18,14 +39,18 @@ const ListManagerComponent = () =>{
             <input className={input}
                    type='text'
                    placeholder={'Search products ...'}
+                   value={searchConditions || ''}
+                   name={'search'}
+                   onChange={changeHandler}
             />
             <span className={text}>Sort By</span>
             <select className={select}
                     name="sort"
                     id="sort"
+                    onChange={changeHandler}
             >
                 <option className={option} value="price">Price</option>
-                <option className={option} value="recently">Recently added</option>
+                <option className={option} value="addingTime">Recently added</option>
             </select>
         </div>
     )
