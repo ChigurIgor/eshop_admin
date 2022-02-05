@@ -6,15 +6,21 @@ import {observer} from "mobx-react";
 const ListManagerComponent = () =>{
     const {wrapper, btn, input, text, select, option} = styles;
     const store = useContext(ProductsStoreContext);
-    const {searchConditions, sortConditions} = store;
+    const {products, searchConditions, sortConditions} = store;
+
+    useEffect(
+        ()=> {console.log(products);},
+        [ products]
+    );
     useEffect(
         ()=> store.sortProducts(sortConditions),
-        [sortConditions]
+        [sortConditions, products]
     );
+
 
     useEffect(
         ()=> store.searchProducts(searchConditions),
-        [searchConditions]
+        [searchConditions, products]
     );
 
     const changeHandler = ({target:{name, value}}) =>{

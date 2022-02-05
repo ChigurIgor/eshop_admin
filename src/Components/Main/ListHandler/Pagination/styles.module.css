@@ -1,3 +1,20 @@
 .wrapper{
-    background-color: rebeccapurple;
+}
+.pageLinkActive{
+    z-index: 3;
+    color: #fff !important;
+    background-color: #212529 !important;
+    border-color: #212529 !important;
+}
+.pageLink{
+    color: black !important;
+    border-color: black !important;
+}
+.pagination{
+    padding-top: 16px;
+    list-style-type: none;
+}
+
+.pagination li{
+    float: left;
 }

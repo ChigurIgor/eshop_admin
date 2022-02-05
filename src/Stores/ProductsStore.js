@@ -174,7 +174,8 @@ class ProductsStore {
     selectedProduct = undefined;
     searchConditions = undefined;
     sortConditions = 'price';
-
+    currentPage = 1;
+    pageLimit = 4;
 
     setSelectedProduct(id){
         this.selectedProduct = this.products.find(product =>  product?.id === id);
@@ -187,15 +188,21 @@ class ProductsStore {
     updateSelectedProduct(newProduct) {
         this.selectedProduct = {... newProduct};
     }
+
     deleteProduct(id){
         const newProducts = this.products.filter(product =>  product?.id !== id);
         this.products = [...newProducts];
-        (this.selectedProduct.id === id) && (this.selectedProduct = undefined);
+        (this.selectedProduct?.id === id) && (this.selectedProduct = undefined);
     }
 
     saveProduct(product){
+        // let newProducts = [...this.products];
+        // const i = _.findIndex(newProducts,{id:product?.id});
+        // (i >= 0) ? (newProducts[i] = product) : (newProducts.push({...product, creationDate: Date.now()}));
+        // this.products = [...newProducts];
         const i = _.findIndex(this.products,{id:product?.id});
-        (i >= 0) ? (this.products[i] = product) : (this.products.push(product));
+        (i >= 0) ? (this.products[i] = product) : (this.products.push({...product, creationDate: Date.now()}));
+        this.searchProducts(this.searchConditions);
     }
     searchProducts(searchConditions){
         searchConditions ?
@@ -214,18 +221,21 @@ class ProductsStore {
         this.sortConditions = conditions;
     }
     sortProducts(conditions){
-        console.log(conditions);
         switch (conditions){
             case 'price':
-                this.productsToShow.sort((a,b) => (a.price > b.price) ? 1 : ((b.price > a.price) ? -1 : 0))
+                this.productsToShow.sort((a,b) => (a.price > b.price) ? 1 : ((b.price > a.price) ? -1 : 0));
+                this.setCurrentPage(1);
                 break;
             case 'addingTime':
-                this.productsToShow.sort((a,b) => (a.creationDate > b.creationDate) ? -1 : ((b.creationDate > a.creationDate) ? 1 : 0))
-
+                this.productsToShow.sort((a,b) => (a.creationDate > b.creationDate) ? -1 : ((b.creationDate > a.creationDate) ? 1 : 0));
+                this.setCurrentPage(1);
                 break;
             default: break;
         }
     }
 
+    setCurrentPage(value){
+        this.currentPage = value;
+    }
 }
 export default ProductsStore;

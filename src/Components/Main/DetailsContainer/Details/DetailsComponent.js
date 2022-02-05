@@ -62,7 +62,7 @@ const DetailsComponent = () =>{
                             type={'number'}
                             placeholder={0}
                             min={0}
-                            value={productPrice || 0}
+                            value={productPrice || ''}
                             onChange={changeHandler}
                             name={'price'}
                         />
