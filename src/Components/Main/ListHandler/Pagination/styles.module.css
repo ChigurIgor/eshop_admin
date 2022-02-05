@@ -1,20 +1,31 @@
 .wrapper{
 }
 .pageLinkActive{
-    z-index: 3;
-    color: #fff !important;
-    background-color: #212529 !important;
-    border-color: #212529 !important;
+    color: rgb(255,255,255) ;
+    background-image: linear-gradient(225deg, rgba(0,0,255, 0.6), rgba(0,0,255,0.7));
+    padding: 3px 10px;
+    border: none ;
+    border-radius: 5px;
+    box-shadow: rgba(0,0,0,0.2) 2px 2px;
 }
 .pageLink{
-    color: black !important;
-    border-color: black !important;
+    color: rgba(0,0,255,0.7);
+    border: none;
+    padding: 3px;
+
 }
 .pagination{
-    padding-top: 16px;
     list-style-type: none;
+    font-size: 20px;
 }
 
 .pagination li{
     float: left;
+}
+.previous {
+    margin-left: 10px;
+}
+
+.next{
+    margin-right: 10px;
 }

@@ -86,15 +86,7 @@ const Pagination = (props) => {
     const pages = fetchPageNumbers();
 
     const gotoPage = page => {
-        // const { onPageChanged = f => f } = props;
         const currentPage = Math.max(0, Math.min(page, totalPages));
-        // const paginationData = {
-        //     currentPage,
-        //     totalPages: totalPages,
-        //     pageLimit: pageLimit,
-        //     totalRecords: totalRecords
-        // };
-        // this.setState({ currentPage }, () => onPageChanged(paginationData));
         store.setCurrentPage(currentPage);
     }
 
@@ -122,8 +114,8 @@ const Pagination = (props) => {
 
                     if (page === LEFT_PAGE) return (
                         <li key={index} className="page-item">
-                            <div className="page-link"  aria-label="Previous" onClick={handleMoveLeft}>
-                                <span aria-hidden="true">&laquo;</span>
+                            <div className={classNames(styles.pageLink,"page-link" )}  aria-label="Previous" onClick={handleMoveLeft}>
+                                <span aria-hidden="true" className={styles.previous}>&laquo;</span>
                                 <span className="sr-only">Previous</span>
                             </div>
                         </li>
@@ -131,7 +123,7 @@ const Pagination = (props) => {
 
                     if (page === RIGHT_PAGE) return (
                         <li key={index} className="page-item">
-                            <div className="page-link" aria-label="Next" onClick={handleMoveRight}>
+                            <div className={classNames(styles.pageLink, styles.next,"page-link" )} aria-label="Next" onClick={handleMoveRight}>
                                 <span aria-hidden="true">&raquo;</span>
                                 <span className="sr-only">Next</span>
                             </div>
