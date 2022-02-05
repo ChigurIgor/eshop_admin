@@ -176,6 +176,7 @@ class ProductsStore {
     sortConditions = 'price';
     currentPage = 1;
     pageLimit = 4;
+    pageNeighbours = 0;
 
     setSelectedProduct(id){
         this.selectedProduct = this.products.find(product =>  product?.id === id);
