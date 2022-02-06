@@ -162,3 +162,6 @@ export const DEFAULT_PRODUCTS =[
         "image": "https://fakestoreapi.com/img/61pHAEJ4NML._AC_UX679_.jpg",
     }
 ]
+
+export const VALID_NAME_LENGTH = 30;
+export const VALID_DESCRIPTION_LENGTH = 200;

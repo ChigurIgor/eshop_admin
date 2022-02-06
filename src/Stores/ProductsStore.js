@@ -175,7 +175,7 @@ class ProductsStore {
     searchConditions = undefined;
     sortConditions = 'price';
     currentPage = 1;
-    pageLimit = 3;
+    pageLimit = 5;
     pageNeighbours = 0;
 
     setSelectedProduct(id){
