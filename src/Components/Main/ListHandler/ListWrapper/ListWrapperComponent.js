@@ -6,13 +6,11 @@ import {ProductsStoreContext} from "../../../../index";
 const ListWrapperComponent = () =>{
     const {wrapper} = styles;
     const store = useContext(ProductsStoreContext);
-    const {productsToShow, currentPage, pageLimit} = store;
-    const offset = (currentPage - 1) * pageLimit;
-    const currentProducts = productsToShow.slice(offset, offset + pageLimit);
+    const {productsToShow} = store;
 
     return(
         <div className={wrapper}>
-            {currentProducts && currentProducts.map(({id, creationDate, name, price, description, image})=> <ListItemComponent
+            {productsToShow && productsToShow.map(({id, creationDate, name, price, description, image})=> <ListItemComponent
                 key={id}
                 id={id}
                 creationDate={creationDate}

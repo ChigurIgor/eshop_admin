@@ -1,14 +1,15 @@
 import styles from './styles.module.css';
-import {useContext, useEffect} from "react";
+import {useContext, useEffect, useState} from "react";
 import {observer} from "mobx-react";
 import {ProductsStoreContext} from "../../../../index";
 
 const ListManagerComponent = () =>{
     const {wrapper, btn, input, text, select, option} = styles;
     const store = useContext(ProductsStoreContext);
-    const {products, searchConditions, sortConditions} = store;
+    const [searchConditions, setSearchConditions] = useState('');
+    const [sortConditions, setSortConditions] = useState('');
+    const {products} = store;
 
-    useEffect(() => store.setCurrentPage(1), [sortConditions, searchConditions])
     useEffect(
         ()=> store.sortProducts(sortConditions),
         [sortConditions, products]
@@ -22,10 +23,10 @@ const ListManagerComponent = () =>{
     const changeHandler = ({target:{name, value}}) =>{
         switch (name){
             case 'search':
-                store.setSearchConditions(value);
+                setSearchConditions(value);
                 break;
             case 'sort':
-                store.setSortConditions(value);
+                setSortConditions(value);
                 break;
             default:
                 break

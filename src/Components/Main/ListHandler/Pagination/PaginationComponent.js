@@ -1,7 +1,7 @@
 import styles from "./styles.module.css";
 import classNames from "classnames";
 import {observer} from "mobx-react";
-import {useContext} from "react";
+import {useContext, useEffect, useState} from "react";
 import {ProductsStoreContext} from "../../../../index";
 const LEFT_PAGE = 'LEFT';
 const RIGHT_PAGE = 'RIGHT';
@@ -23,10 +23,18 @@ const range = (from, to, step = 1) => {
 
 const PaginationComponent = () => {
     const store = useContext(ProductsStoreContext);
-    const {productsToShow, currentPage, pageLimit, pageNeighbours} = store;
+    const pageLimit = 5;
+    const pageNeighbours = 0;
+    const [currentPage, setCurrentPage] = useState(1);
+    const {productsSorted} = store;
     const {pagination, pageLink, pageLinkActive, next, previous} = styles;
-    const totalRecords = productsToShow.length;
+    const totalRecords = productsSorted.length;
     const totalPages = Math.ceil(totalRecords/pageLimit);
+    const offset = (currentPage - 1) * pageLimit;
+    useEffect(() => {
+        store.setProductsToShow((productsSorted.slice(offset, offset + pageLimit)));
+    }, [productsSorted, offset,pageLimit])
+    useEffect(() => {setCurrentPage(1) }, [productsSorted] );
 
     const fetchPageNumbers = () => {
         /**
@@ -79,7 +87,7 @@ const PaginationComponent = () => {
     const pages = fetchPageNumbers();
 
     const gotoPage = page => {
-        store.setCurrentPage(Math.max(0, Math.min(page, totalPages)));
+        setCurrentPage(Math.max(0, Math.min(page, totalPages)));
     }
 
     const handleClick = page => () => {

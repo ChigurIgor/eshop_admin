@@ -7,12 +7,6 @@ import React, {createContext} from "react";
 
 export const ProductsStoreContext = createContext({});
 
-const stores = {
-    ... new ProductsStore,
-    
-
-}
-
 ReactDOM.render(
   <React.StrictMode>
       <ProductsStoreContext.Provider value = {new ProductsStore()}>
