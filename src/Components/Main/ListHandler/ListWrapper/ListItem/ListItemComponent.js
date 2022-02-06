@@ -1,7 +1,7 @@
 import styles from './styles.module.css';
-import {ProductsStoreContext} from "../../../../../App";
 import {useContext} from "react";
 import {observer} from "mobx-react";
+import {ProductsStoreContext} from "../../../../../index";
 
 const ListItemComponent = ({id, creationDate, name, price, description, image:imageUrl}) =>{
     const {wrapper, img, subwrapper, title, descr, btn} = styles;

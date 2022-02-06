@@ -1,7 +1,7 @@
 import styles from './styles.module.css';
 import {useContext, useEffect} from "react";
-import {ProductsStoreContext} from "../../../../App";
 import {observer} from "mobx-react";
+import {ProductsStoreContext} from "../../../../index";
 
 const ListManagerComponent = () =>{
     const {wrapper, btn, input, text, select, option} = styles;

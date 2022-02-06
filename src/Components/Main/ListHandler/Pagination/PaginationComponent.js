@@ -2,7 +2,7 @@ import styles from "./styles.module.css";
 import classNames from "classnames";
 import {observer} from "mobx-react";
 import {useContext} from "react";
-import {ProductsStoreContext} from "../../../../App";
+import {ProductsStoreContext} from "../../../../index";
 const LEFT_PAGE = 'LEFT';
 const RIGHT_PAGE = 'RIGHT';
 

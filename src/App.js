@@ -1,20 +1,21 @@
 import './App.css';
 import HeaderComponent from "./Components/Header/HeaderComponent";
 import MainComponent from "./Components/Main/MainComponent";
-import React, {createContext} from "react";
-import ProductsStore from "./Stores/ProductsStore";
-export const ProductsStoreContext = createContext({});
+import React, {useContext} from "react";
+import {observer} from "mobx-react";
+import {ProductsStoreContext} from "./index";
 
 function App() {
-  return (
-      <ProductsStoreContext.Provider value = {new ProductsStore()}>
+    const store = useContext(ProductsStoreContext);
+    const {products} = store;
+    !products?.length && (store.setProducts(store.getFromLocalStorage()));
+
+    return (
           <div className="App">
               <HeaderComponent/>
               <MainComponent/>
           </div>
-      </ProductsStoreContext.Provider>
-
   );
 }
 
-export default App;
+export default observer(App);

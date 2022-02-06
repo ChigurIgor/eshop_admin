@@ -1,4 +1,4 @@
-const DEFAULT_PRODUCTS =[
+export const DEFAULT_PRODUCTS = [
     {
         "id": '3e5f3453-2e5b-49fc-83b7-54d6cd2cb399',
         "creationDate": 1633439403560,

@@ -1,9 +1,9 @@
 import styles from './styles.module.css';
-import {ProductsStoreContext} from "../../../../App";
 import {useContext} from "react";
 import {observer} from "mobx-react";
 import {validateDescription, validateImageUrl, validateName, validatePrice} from "../../../../Utils/Validators";
 import classNames from "classnames";
+import {ProductsStoreContext} from "../../../../index";
 const DetailsComponent = () =>{
     const {wrapper, img, imgUrl, mainTitle, title, description, price, btn, priceWrapper, text, invalid } = styles;
     const store = useContext(ProductsStoreContext);
