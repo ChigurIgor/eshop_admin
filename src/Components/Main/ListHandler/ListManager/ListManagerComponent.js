@@ -14,7 +14,6 @@ const ListManagerComponent = () =>{
         [sortConditions, products]
     );
 
-
     useEffect(
         ()=> store.searchProducts(searchConditions),
         [searchConditions, products]

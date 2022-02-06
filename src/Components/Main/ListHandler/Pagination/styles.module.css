@@ -17,6 +17,7 @@
 .pagination{
     list-style-type: none;
     font-size: 20px;
+    margin: 0;
 }
 
 .pagination li{

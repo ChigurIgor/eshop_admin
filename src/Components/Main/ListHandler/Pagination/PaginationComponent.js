@@ -11,6 +11,7 @@ const RIGHT_PAGE = 'RIGHT';
  * range(1, 5) => [1, 2, 3, 4, 5]
  */
 const range = (from, to, step = 1) => {
+
     let i = from;
     const range = [];
     while (i <= to) {
@@ -23,6 +24,7 @@ const range = (from, to, step = 1) => {
 const PaginationComponent = () => {
     const store = useContext(ProductsStoreContext);
     const {productsToShow, currentPage, pageLimit, pageNeighbours} = store;
+    const {pagination, pageLink, pageLinkActive, next, previous} = styles;
     const totalRecords = productsToShow.length;
     const totalPages = Math.ceil(totalRecords/pageLimit);
 
@@ -55,14 +57,12 @@ const PaginationComponent = () => {
                     pages = [LEFT_PAGE, ...extraPages, ...pages];
                     break;
                 }
-
                 // handle: (1) {2 3} [4] {5 6} > (10)
                 case (!hasLeftSpill && hasRightSpill): {
                     const extraPages = range(endPage + 1, endPage + spillOffset);
                     pages = [...pages, ...extraPages, RIGHT_PAGE];
                     break;
                 }
-
                 // handle: (1) < {4 5} [6] {7 8} > (10)
                 case (hasLeftSpill && hasRightSpill):
                 default: {
@@ -70,10 +70,8 @@ const PaginationComponent = () => {
                     break;
                 }
             }
-
             return [1, ...pages, totalPages];
         }
-
         return range(1, totalPages);
     }
 
@@ -97,43 +95,33 @@ const PaginationComponent = () => {
     }
 
     return (
-        <>
-            <ul className={classNames("pagination", styles.pagination)} >
-                { pages.map((page, index) => {
-
-                    if (page === LEFT_PAGE) return (
-                        <li key={index} className="page-item">
-                            <div className={classNames(styles.pageLink,"page-link" )}  aria-label="Previous" onClick={handleMoveLeft}>
-                                <span aria-hidden="true" className={styles.previous}>&laquo;</span>
-                                <span className="sr-only">Previous</span>
+            <ul className={classNames("pagination", pagination)} >
+                {pages.map((page, index) =>
+                    <li key={index} className="page-item">
+                        {(page === LEFT_PAGE) ?
+                        <div className={classNames(pageLink, "page-link")} aria-label="Previous"
+                             onClick={handleMoveLeft}>
+                            <span className={previous}>&laquo;</span>
+                            <span>Previous</span>
+                        </div>
+                            :
+                            (page === RIGHT_PAGE) ?
+                            <div className={classNames(pageLink, next, "page-link")} aria-label="Next"
+                                 onClick={handleMoveRight}>
+                                <span>&raquo;</span>
+                                <span>Next</span>
                             </div>
-                        </li>
-                    );
-
-                    if (page === RIGHT_PAGE) return (
-                        <li key={index} className="page-item">
-                            <div className={classNames(styles.pageLink, styles.next,"page-link" )} aria-label="Next" onClick={handleMoveRight}>
-                                <span aria-hidden="true">&raquo;</span>
-                                <span className="sr-only">Next</span>
+                            :
+                            <div className={classNames("page-link", currentPage === page ? pageLinkActive : pageLink )}
+                                 onClick={handleClick(page)}>
+                                {page}
                             </div>
-                        </li>
-                    );
-
-                    return (
-                        <li key={index} className={classNames(  `page-item${ currentPage === page ? ' active' : ''}`)}>
-                            <div className={classNames("page-link", currentPage === page ? styles.pageLinkActive : styles.pageLink )}  onClick={ handleClick(page) }>{ page }</div>
-                        </li>
-                    );
-
-                }) }
-
+                        }
+                    </li>
+                    )
+                }
             </ul>
-        </>
     );
-
-
 }
-
-
 
 export default observer(PaginationComponent);
