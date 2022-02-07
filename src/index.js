@@ -9,7 +9,7 @@ export const ProductsStoreContext = createContext({});
 
 ReactDOM.render(
   <React.StrictMode>
-      <ProductsStoreContext.Provider value = {new ProductsStore()}>
+      <ProductsStoreContext.Provider value = {ProductsStore}>
       <App />
       </ProductsStoreContext.Provider>
   </React.StrictMode>,
